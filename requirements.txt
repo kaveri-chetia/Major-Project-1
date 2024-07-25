@@ -1,2 +1,2 @@
 python= 3.11
-
+pandas= 2.2.2
