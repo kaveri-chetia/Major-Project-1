@@ -417,7 +417,7 @@ def error_rate(merged_df2):
 
 
 def perform_ttest(control_df, test_df, column='completed_numeric'):
-    
+
     control_numeric_df = control_df[[column]]
     test_numeric_df = test_df[[column]]
 
@@ -435,7 +435,87 @@ def perform_ttest(control_df, test_df, column='completed_numeric'):
     print(f"T-Statistic (greater): {t_stat_greater}")
     print(f"P-Value (greater): {p_val_greater}")
 
-    return t_stat, p_val, t_stat_greater, p_val_greater
+def error_rate_with_hypothesis_test(merged_df2):
+    # Separate the data into test and control groups
+    df_test_error = merged_df2[merged_df2['Variation'] == 'Test']
+    df_control_error = merged_df2[merged_df2['Variation'] == 'Control']
+
+    # Convert date_time to datetime
+    df_test_error['date_time'] = pd.to_datetime(df_test_error['date_time'])
+    df_control_error['date_time'] = pd.to_datetime(df_control_error['date_time'])
+
+    # Sort the DataFrames by 'client_id', 'visit_id', and 'date_time'
+    df_test_error = df_test_error.sort_values(by=['client_id', 'visit_id', 'date_time'])
+    df_control_error = df_control_error.sort_values(by=['client_id', 'visit_id', 'date_time'])
+
+    # Define the order of steps
+    step_order = {'start': 1, 'step_1': 2, 'step_2': 3, 'step_3': 4, 'confirm': 5}
+    df_test_error['step_order'] = df_test_error['process_step'].map(step_order)
+    df_control_error['step_order'] = df_control_error['process_step'].map(step_order)
+
+    # Calculate if there is a step reversal
+    df_test_error['step_reversal'] = df_test_error.groupby(['client_id', 'visit_id'])['step_order'].diff() < 0
+    df_control_error['step_reversal'] = df_control_error.groupby(['client_id', 'visit_id'])['step_order'].diff() < 0
+
+    # Calculate the total number of steps and the number of reversals
+    total_steps_test = df_test_error.groupby(['client_id', 'visit_id']).size()
+    total_reversals_test = df_test_error.groupby(['client_id', 'visit_id'])['step_reversal'].sum()
+
+    total_steps_control = df_control_error.groupby(['client_id', 'visit_id']).size()
+    total_reversals_control = df_control_error.groupby(['client_id', 'visit_id'])['step_reversal'].sum()
+
+    # Calculate the error rate as the proportion of step reversals
+    error_rate_test = (total_reversals_test / total_steps_test).mean()
+    error_rate_control = (total_reversals_control / total_steps_control).mean()
+
+    # Perform a one-tailed t-test
+    t_stat, p_val = ttest_ind(total_reversals_test / total_steps_test, total_reversals_control / total_steps_control, alternative='greater', equal_var=False)
+
+    # Return the error rates and the results of the hypothesis test
+    return (f"Error rate of control group is: {error_rate_control:.2f}%, Error rate of test group is: {error_rate_test:.2f}%, "
+            f"T-Statistic: {t_stat:.4f}, P-Value: {p_val:.4f}")    
+
+
+def hypo_3(merged_df2):
+
+    merged_df2_test = merged_df2[merged_df2['Variation'] == 'Test']
+    # Convert 'date_time' to datetime
+    merged_df2_test['date_time'] = pd.to_datetime(merged_df2_test['date_time'])
+
+    # Sort the DataFrame by 'client_id', 'visit_id', and 'date_time'
+    merged_df2_test = merged_df2_test.sort_values(by=['client_id', 'visit_id', 'date_time'])
+
+    # Calculate the duration for each step for each 'client_id' and 'visit_id'
+    merged_df2_test['duration'] = merged_df2_test.groupby(['client_id', 'visit_id'])['date_time'].diff().dt.total_seconds()
+    average_durations_test = merged_df2_test.groupby('process_step')['duration'].mean().reset_index()
+ 
+
+    merged_df2_control = merged_df2[merged_df2['Variation'] == 'Control']
+    merged_df2_control['date_time'] = pd.to_datetime(merged_df2_control['date_time'])
+    merged_df2_control = merged_df2_control.sort_values(by=['client_id', 'visit_id', 'date_time'])
+    merged_df2_control['duration'] = merged_df2_control.groupby(['client_id', 'visit_id'])['date_time'].diff().dt.total_seconds()
+    average_durations_control = merged_df2_control.groupby('process_step')['duration'].mean().reset_index()
+
+    control_hypo_df = average_durations_control['duration']
+    control_hypo_df = pd.DataFrame(control_hypo_df)
+    control_hypo_df['cumulative_duration'] = control_hypo_df['duration'].cumsum()
+    total_duration = control_hypo_df['duration'].sum()
+
+    # Add the total duration as a new column
+    control_hypo_df['total_duration'] = total_duration
+
+    test_hypo_df = average_durations_test['duration']
+    test_hypo_df = pd.DataFrame(test_hypo_df)
+    test_hypo_df['cumulative_duration'] = test_hypo_df['duration'].cumsum()
+    total_duration = test_hypo_df['duration'].sum()
+    test_hypo_df['total_duration'] = total_duration
+
+    t_stat, p_val = ttest_ind(test_hypo_df['total_duration'], control_hypo_df['total_duration'], equal_var=False, alternative='greater')
+
+
+    return(f"P-Value: {p_val}")
+
+
 
 
 
