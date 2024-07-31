@@ -1,2 +1,12 @@
-python= 3.11
-pandas= 2.2.2
+python                : 3.11.9.final.0
+python-bits           : 64
+OS                    : Darwin
+OS-release            : 23.5.0
+pandas                : 2.2.2
+numpy                 : 1.26.4
+pip                   : 24.0
+IPython               : 8.26.0
+matplotlib            : 3.8.4
+numexpr               : 2.8.7
+
+

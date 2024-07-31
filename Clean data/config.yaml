@@ -1,0 +1,3 @@
+variation_path = "df_final_experiment_clients.csv"
+web_data_path = "merged_df_final_web_data.csv"
+demo_path = "df_final_demo.csv"
