@@ -97,10 +97,10 @@ def visualize_data(merged_df2):
     # Calculate the duration for each step for each 'client_id' and 'visit_id'
     merged_df2['duration'] = merged_df2.groupby(['client_id', 'visit_id'])['date_time'].diff().dt.total_seconds()
 
+    # Set the style
 
-
-    # # Set the style
-    # sns.set(style="whitegrid")
+    # Set the style
+    sns.set(style="whitegrid")
 
     # Plot for Client Age
     plt.figure(figsize=(10, 6))
@@ -160,11 +160,10 @@ def visualize_data(merged_df2):
 
 
 
-
 def process_control_data(merged_df2):
     # Filter the dataframe for control group
     df_control = merged_df2[merged_df2['Variation'] == 'Control'].copy()
-    df_control['date_time'] = pd.to_datetime(df_control['date_time'])
+    df_control.loc[:, 'date_time'] = pd.to_datetime(df_control['date_time'])
 
     # Sort the DataFrame by client_id, visitor_id, and date_time
     df_control = df_control.sort_values(by=['client_id', 'visitor_id', 'date_time'])
@@ -250,7 +249,7 @@ def process_test_dataframe(merged_df2, variation='Test'):
     df_filtered = merged_df2[merged_df2['Variation'] == variation]
 
     # Convert 'date_time' to datetime
-    df_filtered['date_time'] = pd.to_datetime(df_filtered['date_time'])
+    df_filtered.loc[:, 'date_time'] = pd.to_datetime(df_filtered['date_time'])
 
     # Sort the DataFrame by client_id, visitor_id, and date_time
     df_filtered = df_filtered.sort_values(by=['client_id', 'visitor_id', 'date_time'])
@@ -348,7 +347,7 @@ def calculate_success_ratio(test_df,control_df):
 def average_duration(merged_df2):
     merged_df2_test = merged_df2[merged_df2['Variation'] == 'Test']
     # Convert 'date_time' to datetime
-    merged_df2_test['date_time'] = pd.to_datetime(merged_df2_test['date_time'])
+    merged_df2_test.loc[:, 'date_time'] = pd.to_datetime(merged_df2_test['date_time'])
 
     # Sort the DataFrame by 'client_id', 'visit_id', and 'date_time'
     merged_df2_test = merged_df2_test.sort_values(by=['client_id', 'visit_id', 'date_time'])
@@ -359,7 +358,7 @@ def average_duration(merged_df2):
  
 
     merged_df2_control = merged_df2[merged_df2['Variation'] == 'Control']
-    merged_df2_control['date_time'] = pd.to_datetime(merged_df2_control['date_time'])
+    merged_df2_control.loc[:, 'date_time'] = pd.to_datetime(merged_df2_control['date_time'])
     merged_df2_control = merged_df2_control.sort_values(by=['client_id', 'visit_id', 'date_time'])
     merged_df2_control['duration'] = merged_df2_control.groupby(['client_id', 'visit_id'])['date_time'].diff().dt.total_seconds()
     average_durations_control = merged_df2_control.groupby('process_step')['duration'].mean().reset_index()
@@ -372,7 +371,7 @@ def error_rate(merged_df2):
 
     df_control_error = merged_df2[merged_df2['Variation'] == 'Control']
 
-    df_test_error['date_time'] = pd.to_datetime(df_test_error['date_time'])
+    df_test_error.loc[:, 'date_time'] = pd.to_datetime(df_test_error['date_time'])
 
     # Sort the DataFrame by 'client_id', 'visit_id', and 'date_time'
     df_test_error = df_test_error.sort_values(by=['client_id', 'visit_id', 'date_time'])
@@ -393,7 +392,7 @@ def error_rate(merged_df2):
 
     
 
-    df_control_error['date_time'] = pd.to_datetime(df_control_error['date_time'])
+    df_control_error.loc[:, 'date_time'] = pd.to_datetime(df_control_error['date_time'])
 
     # Sort the DataFrame by 'client_id', 'visit_id', and 'date_time'
     df_control_error = df_control_error.sort_values(by=['client_id', 'visit_id', 'date_time'])
@@ -441,8 +440,8 @@ def error_rate_with_hypothesis_test(merged_df2):
     df_control_error = merged_df2[merged_df2['Variation'] == 'Control']
 
     # Convert date_time to datetime
-    df_test_error['date_time'] = pd.to_datetime(df_test_error['date_time'])
-    df_control_error['date_time'] = pd.to_datetime(df_control_error['date_time'])
+    df_test_error.loc[:, 'date_time'] = pd.to_datetime(df_test_error['date_time'])
+    df_control_error.loc[:, 'date_time'] = pd.to_datetime(df_control_error['date_time'])
 
     # Sort the DataFrames by 'client_id', 'visit_id', and 'date_time'
     df_test_error = df_test_error.sort_values(by=['client_id', 'visit_id', 'date_time'])
@@ -480,7 +479,7 @@ def hypo_3(merged_df2):
 
     merged_df2_test = merged_df2[merged_df2['Variation'] == 'Test']
     # Convert 'date_time' to datetime
-    merged_df2_test['date_time'] = pd.to_datetime(merged_df2_test['date_time'])
+    merged_df2_test.loc[:, 'date_time'] = pd.to_datetime(merged_df2_test['date_time'])
 
     # Sort the DataFrame by 'client_id', 'visit_id', and 'date_time'
     merged_df2_test = merged_df2_test.sort_values(by=['client_id', 'visit_id', 'date_time'])
@@ -491,7 +490,7 @@ def hypo_3(merged_df2):
  
 
     merged_df2_control = merged_df2[merged_df2['Variation'] == 'Control']
-    merged_df2_control['date_time'] = pd.to_datetime(merged_df2_control['date_time'])
+    merged_df2_control.loc[:, 'date_time'] = pd.to_datetime(merged_df2_control['date_time'])
     merged_df2_control = merged_df2_control.sort_values(by=['client_id', 'visit_id', 'date_time'])
     merged_df2_control['duration'] = merged_df2_control.groupby(['client_id', 'visit_id'])['date_time'].diff().dt.total_seconds()
     average_durations_control = merged_df2_control.groupby('process_step')['duration'].mean().reset_index()
