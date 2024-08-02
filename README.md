@@ -5,6 +5,11 @@
 We have carried out a thorough analysis to comprehend if the new digital design leads better user experience and higher process completion rates. The datasets incudes variables like client age, client tenure month, number of accounts, balance for both users who uses traditional process and who uses the digital interface. The primary objective is to decode the experiment’s performance. 
 
 
+![Dashboard Page 1](https://github.com/user-attachments/assets/296583e3-913a-417a-a5c3-41eae1d2a54c)
+
+
+
+
 ## Project Overview
 
 1. An overview of the demographics or client behaviour analysis or who are the primary customers.
