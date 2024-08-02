@@ -76,21 +76,16 @@ The main KPIs-
 
 The project structure is as follows:
 
-- `notebooks/clean.ipynb`: The Jupyter Notebook containing the data processing, analysis, and visualization code.
--  'main.py` : Main file
--  notebooks/function.py`: Function file
+- `Clean data/clean.ipynb`: The Jupyter Notebook containing the data processing, analysis, and visualization code.
+- `Clean data/main.py` : Main file
+- `Clean data/function.py`: Function file
 - `data/`: A folder containing the dataset files obtained from the IEA.
-- `app/`: A folder containing the application code for creating the project dashboard.
+- `Raw data/`: A folder containing the raw datsets, drafts ipynb.
+- `slides/`: A folder containing the slides.
+- `resources/`: A folder containing all the images.
 - `requirements.txt`: A file specifying the dependencies required to run the project.
 
 
 ## Conclusion
 
 The modern UI design has a higher confirmation rate compared to the traditional website. However, users interacting with the modern UI experience a higher error rate, as indicated by a greater frequency of going back to previous pages. This suggests that there is room for improvement, particularly in refining the steps to enhance user experience.The increased time on the "start" and "step_1" steps in the test group suggests that these changes either made the steps more engaging or added complexity. Further investigation would be needed to determine if this additional time was due to positive engagement 
-
-
-
-
-### Link
-
-  
