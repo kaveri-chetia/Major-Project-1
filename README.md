@@ -5,7 +5,8 @@
 We have carried out a thorough analysis to comprehend if the new digital design leads better user experience and higher process completion rates. The datasets incudes variables like client age, client tenure month, number of accounts, balance for both users who uses traditional process and who uses the digital interface. The primary objective is to decode the experiment’s performance. 
 
 
-![Dashboard (1)](https://github.com/user-attachments/assets/3cf72a4e-2292-4d4d-9768-c8fdf38321c0)
+
+![Dashboard (1)](https://github.com/user-attachments/assets/d72f1ca7-6fdd-49c6-a7bf-5e1d8a5e35a9)
 
 
 
