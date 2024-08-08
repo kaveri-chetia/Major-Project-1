@@ -5,28 +5,21 @@
 We have carried out a thorough analysis to comprehend if the new digital design leads better user experience and higher process completion rates. The datasets incudes variables like client age, client tenure month, number of accounts, balance for both users who uses traditional process and who uses the digital interface. The primary objective is to decode the experiment’s performance. 
 
 
-![Dashboard Page 1](https://github.com/user-attachments/assets/296583e3-913a-417a-a5c3-41eae1d2a54c)
+![Dashboard (1)](https://github.com/user-attachments/assets/3cf72a4e-2292-4d4d-9768-c8fdf38321c0)
+
+
 
 
 
 
 ## Project Overview
 
-1. An overview of the demographics or client behaviour analysis or who are the primary customers.
-2. A comparative analysis of the key performance indicators (KPIs) , which in our case are
-   2.1 Completion Rate(Percentage of users who have reached the confirm stage.)
+The digital world is evolving, and so are Vanguard’s clients. Vanguard is US-based investment management company. Vanguard believed that a more intuitive and modern User Interface (UI), coupled with timely in-context prompts (cues, messages, hints, or instructions provided to users directly within the context of their current task or action), could make the online process smoother for clients. The critical question was: **Would these changes encourage more clients to complete the process?**
 
-    2.2 Time Spent on Each Step (The average duration users spend on each step) 
-
-    2.3 Error Rates (If there’s a step where users go back to a previous step, it may indicate confusion or an error. You should consider moving           from a later step to an earlier one as an error)
-3. 3. Based on the KPIs, we have conducted hypothesis testing to make data-driven conclusions about the effectiveness of the redesign.
-4. Experiment Evaluation
-
-    4.1 The  experiment was well-structured, as we see significant change in response rates.
-
-    4.2 The users were randomly and equally divided between the old and new designs
-
-    4.3 There could be biases, as we feel the information we received is not sufficient enough. The should be more details/insights on the steps,/ every page, to figure out what could be the probable reasons of the results we got.  
+Vanguard just launched an exciting digital experiment. Our goal as Customer Experience team is helping the company to uncover the results of the experiment. To address the critical question, we have developed a set of hypotheses to guide our analysis and determine whether the new UI and in-context prompts effectively enhance client engagement and completion rates as follows: <br>
+1. The new feature would encourage more clients to complete the process. <br>
+2. The new feature would reduce the time spent on each step of the process, leading to more efficient completion. <br>
+3. The new feature would reduce the error rates during the process, leading to smoother completion. <br>
 
 
 
@@ -43,9 +36,13 @@ Experiment Roster : A list revealing which clients were part of the grand experi
 
 ## Key Demographics
 
-After carefully analysing all the variables, we have consisdered, Tenure year, client age, gender as the most significant ones which might have a direct impact on the success rate(process_step) and how  they are related. To serve the purpose we did a bi-variate analysis.
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/b59c3413-6018-4b78-a3b7-fbe8066b29dc">
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/cc4b9f56-4f4e-4db6-842e-da30d78cccc0">
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/4fadb97b-db47-4515-8260-c60714026531">
+<img width="200" alt="image" src="https://github.com/user-attachments/assets/50353301-043b-4889-8145-700575c07bb1">
 
-![heatmap](https://github.com/user-attachments/assets/98b0a1a6-a264-4ff1-b2eb-f7c938187175)
+
+
 
 
 
@@ -57,7 +54,7 @@ The main KPIs-
 3. Error Rates
 
    
-![CB 3](https://github.com/user-attachments/assets/f83d021b-47e1-4f56-bbe8-e09e61198109)
+
 
 
 ## Milestones
