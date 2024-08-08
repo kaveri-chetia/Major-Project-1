@@ -23,17 +23,17 @@ Vanguard just launched an exciting digital experiment. Our goal as Customer Expe
 3. The new feature would reduce the error rates during the process, leading to smoother completion. <br>
 
 
-
-## Data cleaning and merging
-
-Before diving into in-depth analysis or visualization, our first task is to perform an initial round of data cleaning. This is crucial for ensuring that we can work seamlessly with the data across various datasets that we've collated into a single DataFrame
-
 ## About the dataset
 
 The dataset consists of 3 tables.
 Client Profiles : Demographics like age, gender, and account details of our clients.
 Digital Footprints : A detailed trace of client interactions online, divided into two parts: pt_1 and pt_2. It’s recommended to merge these two files prior to a comprehensive data analysis.
 Experiment Roster : A list revealing which clients were part of the grand experiment.
+
+## Data cleaning and merging
+
+Before diving into in-depth analysis or visualization, our first task is to perform an initial round of data cleaning. This is crucial for ensuring that we can work seamlessly with the data across various datasets that we've collated into a single DataFrame
+
 
 ## Key Demographics
 
